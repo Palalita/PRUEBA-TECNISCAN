@@ -1,0 +1,47 @@
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+
+    <div class="card">
+      <div class="card-header titulo">
+        <h5 class="card-title">Calculadora Aritmética</h5>
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)="calculate()" #form="ngForm">
+          <div class="mb-3">
+            <label for="num1" class="form-label">Número 1:</label>
+                      <!-- Input que enlaza su valor con la variable num1 y valida que sea un número -->
+            <input id="num1" type="number" [(ngModel)]="num1" name="num1" class="form-control" required #num1Field="ngModel" (input)="validateNumber(num1Field)" />
+            <!-- Mensaje de advertencia que se muestra si el valor es inválido y el campo ha sido tocado -->
+            <div *ngIf="num1Field.invalid && num1Field.touched" class="alert alert-warning">
+              Por favor, ingresa un número entero válido.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="num2" class="form-label">Número 2:</label>
+              <!-- Input que enlaza su valor con la variable num2 y valida que sea un número -->
+            <input id="num2" type="number" [(ngModel)]="num2" name="num2" class="form-control" required #num2Field="ngModel" (input)="validateNumber(num2Field)" />
+              <!-- Mensaje de advertencia que se muestra si el valor es inválido y el campo ha sido tocado -->
+            <div *ngIf="num2Field.invalid && num2Field.touched" class="alert alert-warning">
+              Por favor, ingresa un número entero válido.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="operation" class="form-label">Operación:</label>
+            <select id="operation" [(ngModel)]="operation" name="operation" class="form-select">
+              <option value="sum">Suma</option>
+              <option value="subtract">Resta</option>
+              <option value="multiply">Multiplicación</option>
+              <option value="divide">División</option>
+            </select>
+          </div>
+          <div class="justify-content-center align-items-center d-flex">
+            <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Calcular</button>
+          </div>
+        </form>
+      </div>
+      <div *ngIf="result !== null" class="card-footer mt-3 res">
+        <p class="fw-bold">Resultado: {{ result }}</p>
+      </div>
+    </div>
+  </div>
+  

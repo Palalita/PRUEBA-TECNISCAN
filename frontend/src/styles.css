@@ -1,0 +1,21 @@
+.titulo{
+    text-align: center;
+}
+
+
+.card{
+    width: 40%;
+
+}
+
+.res{
+    text-align: center;
+}
+
+body{
+    background-color: #6C92C5 !important;
+}
+
+.titulo h5{
+    font-size: 30px;
+}
